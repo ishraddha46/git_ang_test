@@ -8,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class TestFormComponent implements OnInit {
 
   constructor() { }
-
+  isValid = false;
   ngOnInit(): void {
+  }
+  register(){
+
   }
 
 }

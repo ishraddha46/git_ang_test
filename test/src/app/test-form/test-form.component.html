@@ -11,21 +11,21 @@
 </div> -->
 <div class="container">
     <h2 class="text-center">Register</h2>
-    <form class="testForm" autocomplete="off">
+    <form class="testForm" onsubmit="register()" autocomplete="off">
         <!---Email-->
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+        <input type="email" class="form-control" id="email" aria-label="email" placeholder="Enter email" name="email">
       </div>
       <!---Password-->
       <div class="form-group">
         <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+        <input type="password" class="form-control" id="pwd" aria-label="password" placeholder="Enter password" name="pswd">
       </div>
       <!---Comment-->
       <div class="form-group">
         <label for="cmnt">Comment:</label>
-        <textarea class="form-control" id="cmnt" placeholder=" Comment" name="comment">
+        <textarea class="form-control" id="cmnt" aria-label="comment" placeholder=" Comment" name="comment">
         </textarea>
       </div>
       <!---Gender-->
@@ -39,11 +39,21 @@
        <input class="form-check-input" type="radio" value="female" name="gender"> 
         <label class="" for="defaultRadio">Female</label>
     </div>
+      <!---dropdown-->
+      <div class="form-group">
+        <label for="department">Department:</label>
+        <select name="department" id="department" aria-label="department" > 
+            <option value="IT">IT</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Sales">Sales</option>
+          
+          </select>
+      </div>
     <!---Rememeber-->
     </div>
       <div class="form-group form-check">
         <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" name="remember"> Remember me
+          <input class="form-check-input" type="checkbox" aria-label="remember" name="remember"> Remember me
         </label>
       </div>
      
