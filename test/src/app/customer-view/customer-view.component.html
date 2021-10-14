@@ -39,16 +39,19 @@
       <ng-container class="actionCols" matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef>Edit</th>
         <td mat-cell *matCellDef="let element">
-          <a routerLinkActive="active" [routerLink]="['/showCustomer', element.id]">Edit
+          <a routerLinkActive="active" [routerLink]="['/showCustomer', element.id]">
+          <mat-icon aria-hidden="false" aria-label="Example edit icon">edit</mat-icon>
+          
           </a>
-
         </td>
       </ng-container>
       
       <ng-container class="actionCols" matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef>Delete</th>
         <td mat-cell *matCellDef="let element">
-          <a routerLinkActive="active" (click)="deleteCust(element.id)">Delete</a>
+          <a routerLinkActive="active" (click)="deleteCust(element.id)">
+            <mat-icon aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+          </a>
         </td>
       </ng-container>
 

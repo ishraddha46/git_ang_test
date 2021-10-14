@@ -15,6 +15,7 @@ import { CustomerInfoComponent } from './customer-info/customer-info.component';
 import {MatTableModule} from '@angular/material/table';
 import { SearchComponent } from './search/search.component';
 import { ToastrModule } from 'ngx-toastr';
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     ReactiveFormsModule,
     MatTableModule,
+    MatIconModule,
     ToastrModule.forRoot()
   ], 
   providers: [CustomerService],
