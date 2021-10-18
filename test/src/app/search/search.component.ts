@@ -12,11 +12,11 @@ export class SearchComponent implements OnInit {
  
   }
   searchText!: string;
+
   ngOnInit(): void {
   }
 
   search(){
     this.sendChildValue.emit(this.searchText);
-   // this.applicationRef.tick();
   }
 }

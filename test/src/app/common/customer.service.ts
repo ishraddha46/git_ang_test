@@ -14,13 +14,11 @@ export class CustomerService {
     return this.http.get(this.customersUrl+"users").pipe(
       map((res: any) => {
         if (!res) {
-          console.log('No data available!');
           throw new Error('No data available!');
         }
         return res;
       }),
       retry(3) // Retry up to 3 times before failing
-     // catchError(() => of([]))
     );
   }
   getSingleCustomer(custId:number){
@@ -30,26 +28,22 @@ export class CustomerService {
     return this.http.delete(this.customersUrl+"users/"+custId).pipe(
       map((res: any) => {
         if (!res) {
-          console.log('No data available!');
           throw new Error('No data available!');
         }
         return res;
       }),
-      retry(3) // Retry up to 3 times before failing
-     // catchError(() => of([]))
+      retry(3)
     );
   }
   updateSingleCustomer(customerInfo:any){
     return this.http.put(this.customersUrl+"users/"+customerInfo.id,customerInfo).pipe(
       map((res: any) => {
         if (!res) {
-          console.log('Error while updating!');
           throw new Error('Error while updating!');
         }
         return res;
       }),
-      retry(3) // Retry up to 3 times before failing
-     // catchError(() => of([]))
+      retry(3)
     );
   }
 }

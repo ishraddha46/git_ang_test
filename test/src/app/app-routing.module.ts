@@ -5,22 +5,26 @@ import { CustomerViewComponent } from './customer-view/customer-view.component';
 import { HomeComponent } from './home/home.component';
 import { TestFormComponent } from './test-form/test-form.component';
 const routes: Routes = [
-  { path: '', component: CustomerViewComponent, pathMatch: 'full' },
+  { path: '',
+   component: CustomerViewComponent, 
+   pathMatch: 'full' 
+  },
   {
     path: 'customerList',
-     component: CustomerViewComponent,
-   },
+    component: CustomerViewComponent,
+  },
   {
-   // path: 'showCustomer/:mode/:id',
-   path: 'showCustomer/:id',
+    path: 'showCustomer/:id',
     component: CustomerInfoComponent,
-  },{
+  },
+  {
     path: 'home',
-     component: HomeComponent,
-   },{
+    component: HomeComponent,
+  },
+  {
     path: 'testForm',
-     component: TestFormComponent,
-   },
+    component: TestFormComponent,
+  },
 ];
 
 @NgModule({

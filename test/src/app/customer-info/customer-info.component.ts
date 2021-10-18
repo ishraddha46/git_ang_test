@@ -80,7 +80,6 @@ this.form.setValue(this.singleCustomerInfo);
     this.customerApi.updateSingleCustomer(custInfo).subscribe((res:any)=>{
       console.log(res);
       this.toastr.success('Record Updated!', 'Succsses');
-   //   this.router.navigate(['/customerList']);
     })
   }
 }

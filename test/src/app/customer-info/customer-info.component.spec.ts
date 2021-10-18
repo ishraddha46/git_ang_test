@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+//import { RouterModule } from '@angular/router';
+import { ToastrModule } from 'ngx-toastr';
 
 import { CustomerInfoComponent } from './customer-info.component';
 
@@ -8,7 +10,8 @@ describe('CustomerInfoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CustomerInfoComponent ]
+      declarations: [ CustomerInfoComponent ],
+      imports: [ToastrModule.forRoot()]
     })
     .compileComponents();
   });

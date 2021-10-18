@@ -1,11 +1,9 @@
-import {Component,OnInit, Input, OnChanges,SimpleChanges,SimpleChange,ChangeDetectionStrategy,DoCheck,ChangeDetectorRef
-} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CustomerService } from '../common/customer.service';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { fromEvent } from 'rxjs';
-import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -13,9 +11,9 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './customer-view.component.html',
   styleUrls: ['./customer-view.component.scss'],
 })
-export class CustomerViewComponent implements OnInit, OnChanges {
+export class CustomerViewComponent implements OnInit {
   valueFromChild!: string;
-  searchText: any;
+  searchText!: string;
 
   displayedColumns: string[] = [
     'id',
@@ -30,7 +28,6 @@ export class CustomerViewComponent implements OnInit, OnChanges {
 
   constructor(
     private toastr: ToastrService,
-    private ref: ChangeDetectorRef,
     private customerApi: CustomerService,
     private route: ActivatedRoute,
     private router: Router
@@ -38,7 +35,6 @@ export class CustomerViewComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.customerApi.getCustomerList().subscribe((res) => {
-      console.log(res);
       this.custList = res;
       this.dataSource = new MatTableDataSource(this.custList);
     });
@@ -52,15 +48,7 @@ export class CustomerViewComponent implements OnInit, OnChanges {
 
     this.customerApi
       .getCustomerList()
-      .pipe(
-        //   filter(Boolean),
-        debounceTime(1000)
-        // distinctUntilChanged(),
-        // tap((event:KeyboardEvent) => {
-        //   console.log(event)
-        //   console.log(this.input.nativeElement.value)
-        // })
-      )
+      .pipe(debounceTime(1000))
       .subscribe((res) => {
         let searchResult = this.custList.filter(function (ele: any) {
           let name = ele.name.toLowerCase();
@@ -73,23 +61,14 @@ export class CustomerViewComponent implements OnInit, OnChanges {
       });
   }
 
-  ngOnChanges() {
-    //  this.ref.detectChanges();
-    console.log('OnChanges');
-    // console.log(JSON.stringify(changes));
-  }
   viewCustomer(custId: string) {
     this.router.navigate(['/showCustomer', { id: custId }]);
   }
+
   deleteCust(custId: string) {
     this.customerApi.deleteCustomer(custId).subscribe((res) => {
-      console.log(res);
       this.custList = res;
       this.toastr.success('Record Deleted!', 'Succsses');
     });
   }
-  // ngAfterViewChecked() {
-  //   console.log(this.valueFromChild);
-  //   this.searchCustomer();
-  // }
 }

@@ -12,7 +12,6 @@ export class TestFormComponent implements OnInit {
   ngOnInit(): void {
   }
   register(){
-
-  }
+ }
 
 }

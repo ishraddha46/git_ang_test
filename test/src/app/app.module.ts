@@ -16,6 +16,8 @@ import {MatTableModule} from '@angular/material/table';
 import { SearchComponent } from './search/search.component';
 import { ToastrModule } from 'ngx-toastr';
 import {MatIconModule} from '@angular/material/icon';
+import { ProdCurrencyPipe } from './prod-currency.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,8 @@ import {MatIconModule} from '@angular/material/icon';
     TestFormComponent,
     CustomerViewComponent,
     CustomerInfoComponent,
-    SearchComponent
+    SearchComponent,
+    ProdCurrencyPipe
   ],
   imports: [
     BrowserModule,
@@ -35,9 +38,10 @@ import {MatIconModule} from '@angular/material/icon';
     ReactiveFormsModule,
     MatTableModule,
     MatIconModule,
+    
     ToastrModule.forRoot()
   ], 
-  providers: [CustomerService],
+  providers: [CustomerService,    HttpClientModule  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
